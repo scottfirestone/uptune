@@ -10,11 +10,19 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- 
- 
+
+
  */
 
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "custom";
+
+html {
+  background-color: black;
+}
+.avatar{
+  width: 50px;
+  height: 50px;
+}

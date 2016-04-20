@@ -9,13 +9,26 @@
       </button>
       <a class="navbar-brand" href="#">UpTune</a>
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Start an UpTune Playlist", "#" %></li>
-        <li><%= link_to "Login with Spotify", spotify_login_path %></li>
+        <% if current_user %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <div class="col-md-4 text-center">
+                <%#= binding.pry %>
+                <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
+                display:block; margin:auto;" src="<%= current_user.image %>"/>
+              </div>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Logout", "#" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Login with Spotify", spotify_login_path %></li>
+        <% end %>
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
