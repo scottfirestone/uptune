@@ -41,7 +41,7 @@ RSpec.configure do |config|
   end
 
 # The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+# with RSpec, but feel free to customize to your heart"s content.
 =begin
   # These two settings work together to allow you to limit a spec run
   # to individual examples or groups you care about by tagging them with
@@ -63,13 +63,13 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
 
   # Many RSpec users commonly either run the entire suite or an individual
-  # file, and it's useful to allow more verbose output when running an
+  # file, and it"s useful to allow more verbose output when running an
   # individual spec file.
   if config.files_to_run.one?
     # Use the documentation formatter for detailed output,
     # unless a formatter has already been configured
     # (e.g. via a command-line flag).
-    config.default_formatter = 'doc'
+    config.default_formatter = "doc"
   end
 
   # Print the 10 slowest examples and example groups at the
@@ -89,4 +89,20 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+end
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:spotify] = OmniAuth::AuthHash.new(
+    "uid" => "mock_user",
+    "info" => {
+      "image" => "mock_user_thumbnail_url"
+    },
+    "credentials" => {
+      "auth_token" => "mock_auth_token",
+      "refresh_token" => "mock_refresh_token",
+      "expires_at" => "mock_token_expiry"
+    }
+  )
 end
