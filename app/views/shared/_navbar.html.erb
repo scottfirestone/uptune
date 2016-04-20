@@ -15,11 +15,7 @@
         <% if current_user %>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <div class="col-md-4 text-center">
-                <%#= binding.pry %>
-                <img class="img-circle avatar avatar-original" style="-webkit-user-select:none;
-                display:block; margin:auto;" src="<%= current_user.image %>"/>
-              </div>
+              <%= current_user.uid %>
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><%= link_to "Logout", "#" %></li>

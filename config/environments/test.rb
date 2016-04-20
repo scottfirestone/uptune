@@ -2,9 +2,9 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:spotify] = {
-    provider: 'spotify',
-    uid: 'mingus_amongus'
-    
+    "provider" => "spotify",
+    "uid" => "mingus_amongus"
+
   }
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
