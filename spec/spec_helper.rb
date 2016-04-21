@@ -103,6 +103,4 @@ def create_authorized_user
               refresh_token: "AQD41yPAbRAlYzMAVG18vhVyOblK9jP2lZ_fh2B_EPKDHmzT-XJYnqXnW4TCpkk42DcL3OCH--34GTeUNHtOuDKvOtYSsYWCGrvhZvAp9cSxxnxYBfPZxehAc1Ie2b_Yg7c",
               token_expiry: "Thu, 21 Apr 2016 01:46:29 UTC +00:00"
   )
-  user.validate_auth_token
-  user
 end

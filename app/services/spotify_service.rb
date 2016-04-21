@@ -7,21 +7,6 @@ class SpotifyService
     @_secret = ENV["SPOTIFY_CLIENT_SECRET"]
   end
 
-  def request_new_token(user)
-    hash = { grant_type: "refresh_token", refresh_token: user.refresh_token}
-    encoded_auth = Base64.strict_encode64("#{@_apikey}:#{@_secret}")
-    response = Faraday.new("https://accounts.spotify.com/api/token").post do |req|
-      req.headers["Authorization"] = "Basic #{encoded_auth}"
-      req.body = hash
-    end
-    parse(response)
-  end
-
-  def create_playlist(user, name)
-    response = Faraday.new("https://api/spotify.com/api/v1/")
-
-  end
-
   private
 
     def apikey

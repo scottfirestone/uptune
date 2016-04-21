@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :playlists
-  
+
   def self.from_omniauth(auth_info)
     where(uid: auth_info[:uid]).first_or_create do |new_user|
       new_user.uid = auth_info.uid
@@ -11,11 +11,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  def validate_auth_token
-    if Time.now > token_expiry
-      new_token = SpotifyService.new.request_new_token(self)[:access_token]
-      new_expiry = Time.now + 60.minutes
-      update_attributes(token: new_token, token_expiry: new_expiry)
-    end
+  def update_token(new_token)
+    new_expiry = Time.now + 60.minutes
+    update_attributes(token: new_token, token_expiry: new_expiry)
+  end
+
+  def token_expired?
+    Time.now > token_expiry
   end
 end

@@ -3,6 +3,6 @@ class PlaylistCreator
     code         = CodeGenerator.generate_code
     user         = user
     name         = Time.now.strftime('%Y%m%d')
-    raw_playlist = SpotifyService.new.create_playlist(user, name)
+    raw_playlist = SpotifyUserService.new(user).create_playlist(name)
   end
 end
