@@ -8,4 +8,11 @@ class SessionsController < ApplicationController
     end
     redirect_to root_path
   end
+
+  def destroy
+    session.delete(:uid)
+    @current_user = nil
+    flash[:success] = "You have been logged out."
+    redirect_to root_url
+  end
 end

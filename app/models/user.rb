@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   def validate_auth_token
     if Time.now > token_expiry
       new_token = SpotifyService.new.request_new_token(self)[:access_token]
-      new_expiry = token_expiry + 60.minutes
+      new_expiry = Time.now + 60.minutes
       update_attributes(token: new_token, token_expiry: new_expiry)
     end
   end
