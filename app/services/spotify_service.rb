@@ -17,7 +17,7 @@ class SpotifyService
   end
 
   private
-  
+
     def apikey
       @_apikey
     end

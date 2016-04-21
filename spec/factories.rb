@@ -4,6 +4,6 @@ FactoryGirl.define do
     image "MyString"
     token "MyString"
     refresh_token "MyString"
-    token_expiry "MyString"
+    token_expiry Time.parse("2016-04-20 22:21:52.000000")
   end
 end
