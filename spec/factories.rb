@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :playlist do
+    name "MyString"
+    id "MyString"
+    uri "MyString"
+    href "MyString"
+    tracks "MyString"
+    snapshot_id "MyString"
+    user 1
+  end
   factory :user do
     uid "MyString"
     image "MyString"

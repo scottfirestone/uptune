@@ -106,3 +106,14 @@ def stub_omniauth
     }
   )
 end
+
+def create_authorized_user
+  user = User.create(uid: "mingus_amongus",
+              image: "https://scontent.xx.fbcdn.net/hprofile-xap1/v/t1.0-1/249783_930132649627_927852406_n.jpg?oh=c79ea044bf0027f57b817bd734b46438&oe=57B11642",
+              token: "BQA5YhFv63_InK4mlc3TDFZLfT9FOUY-otWJS0yd07AFE_NpPSKLa-nFq5rji7m4Gy01YyFAtgqIIk4h1D-FGa4fJGQyng6AARk_5FiuOQ5OJDWergduAnZHYa5U0v4ed7rtRK1ykx9nfRaAea65SRhUW9T7NtzIupo86rWvUk45YXlOE0sH_a-rpuMPXmkrPYAQc6UvNZCCxXzW4w14Y4wr9AJ5QQQhHZO6",
+              refresh_token: "AQD41yPAbRAlYzMAVG18vhVyOblK9jP2lZ_fh2B_EPKDHmzT-XJYnqXnW4TCpkk42DcL3OCH--34GTeUNHtOuDKvOtYSsYWCGrvhZvAp9cSxxnxYBfPZxehAc1Ie2b_Yg7c",
+              token_expiry: "Thu, 21 Apr 2016 01:46:29 UTC +00:00"
+  )
+  user.validate_auth_token
+  user
+end
