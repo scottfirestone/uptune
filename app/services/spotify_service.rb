@@ -2,6 +2,7 @@ class SpotifyService
   require "base64"
 
   def initialize
+    #validate/refresh user's token
     @_apikey = ENV["SPOTIFY_CLIENT_ID"]
     @_secret = ENV["SPOTIFY_CLIENT_SECRET"]
   end
@@ -14,6 +15,11 @@ class SpotifyService
       req.body = hash
     end
     parse(response)
+  end
+
+  def create_playlist(user, name)
+    response = Faraday.new("https://api/spotify.com/api/v1/")
+
   end
 
   private

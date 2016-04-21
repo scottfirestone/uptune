@@ -1,6 +1,7 @@
 class PlaylistController < ApplicationController
   def create
-    PlaylistCreator.new(current_user)
+    playlist = PlaylistCreator.new(current_user)
+    redirect_to playlist_path(playlist.id) 
   end
 
   def show
