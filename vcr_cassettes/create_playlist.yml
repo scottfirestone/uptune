@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://100b5360e68743b5862e354d1a98516c:e9df7d88496a4e2c956028d243ecd02d@accounts.spotify.com/api/token
+    body:
+      encoding: UTF-8
+      string: grant_type=refresh_token&refresh_token=AQD41yPAbRAlYzMAVG18vhVyOblK9jP2lZ_fh2B_EPKDHmzT-XJYnqXnW4TCpkk42DcL3OCH--34GTeUNHtOuDKvOtYSsYWCGrvhZvAp9cSxxnxYBfPZxehAc1Ie2b_Yg7c
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 21 Apr 2016 17:14:52 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '63'
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=10
+    body:
+      encoding: UTF-8
+      string: '{"error":"invalid_client","error_description":"Invalid client"}'
+    http_version: 
+  recorded_at: Thu, 21 Apr 2016 17:14:52 GMT
+- request:
+    method: post
+    uri: https://api.spotify.com/v1/users/mingus_amongus/playlists
+    body:
+      encoding: UTF-8
+      string: '{"name":"20160421"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Authorization:
+      - Bearer
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 21 Apr 2016 17:14:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - timeout=600
+      Www-Authenticate:
+      - Bearer realm="spotify", error="invalid_request", error_description="Only valid
+        bearer authentication supported"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Methods:
+      - GET, POST, OPTIONS, PUT, DELETE
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Max-Age:
+      - '604800'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Origin, Content-Type
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "error": {
+            "status": 400,
+            "message": "Only valid bearer authentication supported"
+          }
+        }
+    http_version: 
+  recorded_at: Thu, 21 Apr 2016 17:14:59 GMT
+recorded_with: VCR 3.0.1

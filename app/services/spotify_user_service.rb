@@ -2,10 +2,11 @@ class SpotifyUserService
   require "base64"
 
   def initialize(user)
-    @_user   = user
-    validate_auth_token(user)
     @_apikey = ENV["SPOTIFY_CLIENT_ID"]
     @_secret = ENV["SPOTIFY_CLIENT_SECRET"]
+    @_connection = Faraday.new("https://api.spotify.com/")
+    @_user   = user
+    validate_auth_token(user)
   end
 
   def request_new_token
@@ -20,8 +21,13 @@ class SpotifyUserService
   end
 
   def create_playlist(name)
-    response = Faraday.new("https://api/spotify.com/api/v1/")
-
+    req_body = { name: "#{name}" }.to_json
+    response = connection.post do |req|
+      req.headers['Authorization'] = "Bearer #{user.token}"
+      req.url "v1/users/#{user.uid}/playlists"
+      req.body = req_body
+    end
+    parse(response)
   end
 
   private

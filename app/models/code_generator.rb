@@ -1,11 +1,7 @@
-class CodeGenerator
-  @@code_library = (10000..1000000).to_a
+module CodeGenerator
+  require "securerandom"
 
   def self.generate_code
-    @@code_library.shuffle!.pop
-  end
-
-  def self.code_library
-    @@code_library
+    SecureRandom.hex(3)
   end
 end
