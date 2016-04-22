@@ -1,4 +1,7 @@
-require 'vcr'
+require "simplecov"
+require "vcr"
+
+SimpleCov.start 'rails'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'vcr_cassettes'
