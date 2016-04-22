@@ -6,5 +6,6 @@ class PlaylistController < ApplicationController
 
   def show
     @playlist = Playlist.find_by(code: params[:id])
+    render file: "public/404" if @playlist.nil?
   end
 end

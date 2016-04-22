@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Creating a playlist" do
   scenario "user can create a new playlist" do
     VCR.use_cassette("create_a_playlist") do
-      user = create_authorized_user
+      user = create_authenticated_user
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit root_path
