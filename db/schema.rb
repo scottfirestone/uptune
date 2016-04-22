@@ -11,10 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420205307) do
+ActiveRecord::Schema.define(version: 20160421164828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlists", force: :cascade do |t|
+    t.string   "name"
+    t.string   "playlist_id"
+    t.string   "uri"
+    t.string   "href"
+    t.string   "tracks"
+    t.string   "snapshot_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "code"
+  end
+
+  add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "uid"
@@ -26,4 +41,5 @@ ActiveRecord::Schema.define(version: 20160420205307) do
     t.datetime "token_expiry"
   end
 
+  add_foreign_key "playlists", "users"
 end

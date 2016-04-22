@@ -1,0 +1,28 @@
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav playlist-code">
+      <p>
+        Your Playlist Code is: <%= link_to "#{@playlist.code}", playlist_path(@playlist.code) %>
+      </p>
+    </div>
+    <div class="col-sm-8 text-left">
+      <div class="container">
+      	<div class="row">
+      		<h2>Search Spotify</h2>
+           <div id="custom-search-input">
+            <div class="input-group col-md-12">
+              <input type="text" class="  search-query form-control" placeholder="Search" />
+              <span class="input-group-btn">
+                <button class="btn btn-danger" type="button">
+                  <span class=" glyphicon glyphicon-search"></span>
+                </button>
+              </span>
+            </div>
+          </div>
+      	</div>
+      </div>
+    </div>
+    <div class="col-sm-2 sidenav">
+    </div>
+  </div>
+</div>
