@@ -45,7 +45,7 @@ class SpotifyUserService
     end
 
     def validate_auth_token(user)
-      request_new_token if user.token_expired?
+      request_new_token if user.token_expired? || user.token.nil?
     end
 
     def parse(response)
