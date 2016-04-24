@@ -7,22 +7,35 @@
     </div>
     <div class="col-sm-8 text-left">
       <div class="container">
-      	<div class="row">
-      		<h2>Search Spotify</h2>
-           <div id="custom-search-input">
-            <div class="input-group col-md-12">
-              <input type="text" class="  search-query form-control" placeholder="Search" />
-              <span class="input-group-btn">
-                <button class="btn btn-danger" type="button">
-                  <span class=" glyphicon glyphicon-search"></span>
-                </button>
-              </span>
-            </div>
-          </div>
-      	</div>
+        <h1> Current Playlist </h1>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th>Artist</th>
+              <th>Duration</th>
+              <th>Votes</th>
+          </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
       </div>
     </div>
     <div class="col-sm-2 sidenav">
+      <div id="custom-search-input">
+       <div class="input-group col-md-12">
+         <input type="text" class="search-query form-control" placeholder="Search Spotify"/>
+         <span class="input-group-btn">
+           <button id="search-spotify" class="btn btn-info" type="button">
+             <span class=" glyphicon glyphicon-search"></span>
+           </button>
+         </span>
+       </div>
+       <div id="search-results">
+       </div>
+     </div>
     </div>
   </div>
 </div>

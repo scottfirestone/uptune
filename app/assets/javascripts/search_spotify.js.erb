@@ -1,0 +1,50 @@
+$(document).ready(function(){
+  $("#search-spotify").on('click', fetchResults);
+  // $("#create-post").on('click', createPost);
+  // $("body").on('click', "a.delete-post", deletePost);
+  // setInterval(fetchPosts, 5000);
+});
+
+function fetchResults(queryParams){
+  var queryParams = $(".search-query").val();
+
+  $.ajax({
+    url: "https://api.spotify.com/v1/search?q=" +
+    queryParams +
+    "&type=track&limit=3",
+    method: "GET",
+    success: function(results){
+      // $("#search-results").html();
+      debugger;
+      var items = results.tracks.items
+      $(items).each(function(index, item){
+        // $("#results")
+          renderResult(item);
+      })
+    }
+  });
+};
+
+function renderResult(item){
+  $("#search-results")
+    .append("<div class=row>"
+    //+ "<#%= link_to 'Add Song', add_track_path(@playlist.code) %>"
+    + "<br><div class=current-result><p>"
+    + item.name
+    + " by "
+    + item.artists[0].name
+    + "</p></div></div><br>");
+}
+
+// function deletePost(event){
+//   event.preventDefault();
+//   var post_id = $(this).parents(".post").data("post-id");
+//
+//   $.ajax({
+//     url: "https://birdeck.herokuapp.com/api/v1/posts/" + post_id + ".json",
+//     method: "DELETE",
+//     success: function(){
+//       $(".post[data-post-id=" + post_id + "]").remove();
+//     }
+//   })
+// }

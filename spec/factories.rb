@@ -1,13 +1,12 @@
 FactoryGirl.define do
   factory :playlist do
-    name        "MyString"
-    playlist_id "MyString"
+    name "20160424"
+    playlist_id "6hTUSjCRCxJ5rwVQtFLnKw"
     id          "MyString"
-    uri         "MyString"
-    href        "MyString"
-    tracks      "MyString"
-    snapshot_id "MyString"
-    code        "MyString"
+    uri "spotify:user:mingus_amongus:playlist:6hTUSjCRCxJ5rwVQtFLnKw"
+    href "https://api.spotify.com/v1/users/mingus_amongus"
+    snapshot_id "V/LIB06PqBKBcd49oYDhJVqjKdowJXm53xJLvcPz1vhj/12XI2Q6/yNjNbn6oWGP"
+    code "4203a7"
   end
   factory :user do
     uid           "MyString"
@@ -19,6 +18,15 @@ FactoryGirl.define do
 end
 
 FactoryGirl.define do
+  factory :playlist_track do
+    playlist nil
+    track nil
+  end
+  factory :track do
+    artist "MyString"
+    title "MyString"
+    uri "MyString"
+  end
   factory :user_with_playlist do
     uid           "MyString"
     image         "MyString"

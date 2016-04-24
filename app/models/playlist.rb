@@ -2,6 +2,9 @@ class Playlist < ActiveRecord::Base
   include CodeGenerator
 
   belongs_to :user
+  has_many :playlist_tracks
+  has_many :tracks, through: :playlist_tracks
+
   validates_uniqueness_of :code
 
   def self.from_raw_playlist(raw_playlist, user)
@@ -25,5 +28,12 @@ class Playlist < ActiveRecord::Base
 
   def to_param
     code
+  end
+
+  def add_track(track_params)
+    # binding.pry
+    tracks.create(
+      track_params
+    )
   end
 end
