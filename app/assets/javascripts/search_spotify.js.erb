@@ -59,8 +59,8 @@ function renderResult(item){
   f.appendChild(code)
   f.appendChild(s)
 
-  document.getElementById("search-results").appendChild(f)
-  $("#search-results").append("<div class='list-group'>"+item.name+" by "+item.artists[0].name+"</div>");
+  // document.getElementById("search-results").appendChild(f)
+  $("#search-results").append(f).append("<div class='list-group'>"+item.name+" by "+item.artists[0].name+"</div>");
   // $("#search-results")
   //   .append("<div class=row>"
   //   + "<br><div class='current-result'>"
