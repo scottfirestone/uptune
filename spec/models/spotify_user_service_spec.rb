@@ -30,4 +30,12 @@ RSpec.describe SpotifyUserService, type: :service do
       expect(response[:owner][:id]).to eq(user.uid)
     end
   end
+
+  it "adds a track to an existing playlist" do
+    user = create_authenticated_user
+    service = SpotifyUserService.new(user)
+
+    service.add_track_to_playlist(playlist_id, track_uri)
+
+  end
 end

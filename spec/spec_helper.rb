@@ -1,7 +1,11 @@
 require "simplecov"
 require "vcr"
+require "capybara/rspec"
+require "capybara/webkit/matchers"
 
 SimpleCov.start 'rails'
+
+Capybara.javascript_driver = :webkit
 
 VCR.configure do |c|
   c.cassette_library_dir = 'vcr_cassettes'

@@ -11,17 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421164828) do
+ActiveRecord::Schema.define(version: 20160424182949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "playlist_tracks", force: :cascade do |t|
+    t.integer  "playlist_id"
+    t.integer  "track_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "playlist_tracks", ["playlist_id"], name: "index_playlist_tracks_on_playlist_id", using: :btree
+  add_index "playlist_tracks", ["track_id"], name: "index_playlist_tracks_on_track_id", using: :btree
 
   create_table "playlists", force: :cascade do |t|
     t.string   "name"
     t.string   "playlist_id"
     t.string   "uri"
     t.string   "href"
-    t.string   "tracks"
     t.string   "snapshot_id"
     t.integer  "user_id"
     t.datetime "created_at",  null: false
@@ -30,6 +39,14 @@ ActiveRecord::Schema.define(version: 20160421164828) do
   end
 
   add_index "playlists", ["user_id"], name: "index_playlists_on_user_id", using: :btree
+
+  create_table "tracks", force: :cascade do |t|
+    t.string   "artist"
+    t.string   "title"
+    t.string   "uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "uid"
@@ -41,5 +58,7 @@ ActiveRecord::Schema.define(version: 20160421164828) do
     t.datetime "token_expiry"
   end
 
+  add_foreign_key "playlist_tracks", "playlists"
+  add_foreign_key "playlist_tracks", "tracks"
   add_foreign_key "playlists", "users"
 end

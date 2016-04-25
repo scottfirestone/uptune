@@ -1,0 +1,89 @@
+$(document).ready(function(){
+  $("#search-spotify").on('click', fetchResults);
+  // $("#create-post").on('click', createPost);
+  // $("body").on('click', "a.delete-post", deletePost);
+  // setInterval(fetchPosts, 5000);
+});
+
+function fetchResults(queryParams){
+  var queryParams = $(".search-query").val();
+
+  $.ajax({
+    url: "https://api.spotify.com/v1/search?q=" +
+    queryParams +
+    "&type=track&limit=3",
+    method: "GET",
+    success: function(results){
+      var items = results.tracks.items
+      $(items).each(function(index, item){
+        renderResult(item);
+      })
+    }
+  });
+};
+
+function renderResult(item){
+  var f = document.createElement("form");
+  f.setAttribute('method', "post");
+  f.setAttribute('action', "add_track");
+
+  var title = document.createElement("input");
+  title.setAttribute("type", "hidden");
+  title.setAttribute("name", "track[title]");
+  title.setAttribute("value", item.name);
+
+  var artist = document.createElement("input");
+  artist.setAttribute("type", "hidden");
+  artist.setAttribute("name", "track[artist]");
+  artist.setAttribute("value", item.artists[0].name);
+
+  var uri = document.createElement("input");
+  uri.setAttribute("type", "hidden");
+  uri.setAttribute("name", "track[uri]");
+  uri.setAttribute("value", item.uri);
+
+  var code = document.createElement("input");
+  code.setAttribute("type", "hidden");
+  code.setAttribute("name", "track[code]");
+  code.setAttribute("value", window.location.href.split('/').pop());
+
+  var s = document.createElement("input");
+  s.setAttribute('type', "submit");
+  s.setAttribute('class', "add-link");
+  s.setAttribute('value', "Add");
+
+
+
+  f.appendChild(title)
+  f.appendChild(artist)
+  f.appendChild(uri)
+  f.appendChild(code)
+  f.appendChild(s)
+
+  document.getElementById("search-results").appendChild(f)
+  $("#search-results").append("<div class=row>"+item.name+" by "+item.artists[0].name+"</div>");
+  // $("#search-results")
+  //   .append("<div class=row>"
+  //   + "<br><div class='current-result'>"
+  //   + "<form action='playlist/add_track'>"
+  //   + "<input type='hidden' name='title' value='
+  //   + item.name
+  //   +
+  //   class='add-link'>Add</a><p>"
+  //   + " by "
+  //   + item.artists[0].name
+  //   + "</p></div></div><br>");
+}
+
+// function deletePost(event){
+//   event.preventDefault();
+//   var post_id = $(this).parents(".post").data("post-id");
+//
+//   $.ajax({
+//     url: "https://birdeck.herokuapp.com/api/v1/posts/" + post_id + ".json",
+//     method: "DELETE",
+//     success: function(){
+//       $(".post[data-post-id=" + post_id + "]").remove();
+//     }
+//   })
+// }
