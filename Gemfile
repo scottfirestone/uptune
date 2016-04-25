@@ -14,9 +14,6 @@ gem 'omniauth-spotify'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.0'
-  gem 'capybara'
-  gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
@@ -34,4 +31,8 @@ group :test do
   gem 'webmock'
   gem 'simplecov', require: false
   gem 'launchy'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'database_cleaner'
 end

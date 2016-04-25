@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Playlist, type: :model do
   it "can add a track" do
-    track_params = { uri:   "spotify:track:51pQ7vY7WXzxskwloaeqyj",
-                              artist: "Led Zeppelin",
-                              title: "Stairway To Heaven"
-                   }
+    track_params = {
+      uri:    "spotify:track:51pQ7vY7WXzxskwloaeqyj",
+      artist: "Led Zeppelin",
+      title:  "Stairway To Heaven"
+    }
     playlist = create(:playlist)
     playlist.add_track(track_params)
 

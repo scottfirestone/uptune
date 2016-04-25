@@ -14,26 +14,65 @@ function fetchResults(queryParams){
     "&type=track&limit=3",
     method: "GET",
     success: function(results){
-      // $("#search-results").html();
-      debugger;
       var items = results.tracks.items
       $(items).each(function(index, item){
-        // $("#results")
-          renderResult(item);
+        renderResult(item);
       })
     }
   });
 };
 
 function renderResult(item){
-  $("#search-results")
-    .append("<div class=row>"
-    //+ "<#%= link_to 'Add Song', add_track_path(@playlist.code) %>"
-    + "<br><div class=current-result><p>"
-    + item.name
-    + " by "
-    + item.artists[0].name
-    + "</p></div></div><br>");
+  var f = document.createElement("form");
+  f.setAttribute('method', "post");
+  f.setAttribute('action', "add_track");
+
+  var title = document.createElement("input");
+  title.setAttribute("type", "hidden");
+  title.setAttribute("name", "track[title]");
+  title.setAttribute("value", item.name);
+
+  var artist = document.createElement("input");
+  artist.setAttribute("type", "hidden");
+  artist.setAttribute("name", "track[artist]");
+  artist.setAttribute("value", item.artists[0].name);
+
+  var uri = document.createElement("input");
+  uri.setAttribute("type", "hidden");
+  uri.setAttribute("name", "track[uri]");
+  uri.setAttribute("value", item.uri);
+
+  var code = document.createElement("input");
+  code.setAttribute("type", "hidden");
+  code.setAttribute("name", "track[code]");
+  code.setAttribute("value", window.location.href.split('/').pop());
+
+  var s = document.createElement("input");
+  s.setAttribute('type', "submit");
+  s.setAttribute('class', "add-link");
+  s.setAttribute('value', "Add");
+
+
+
+  f.appendChild(title)
+  f.appendChild(artist)
+  f.appendChild(uri)
+  f.appendChild(code)
+  f.appendChild(s)
+
+  document.getElementById("search-results").appendChild(f)
+  $("#search-results").append("<div class=row>"+item.name+" by "+item.artists[0].name+"</div>");
+  // $("#search-results")
+  //   .append("<div class=row>"
+  //   + "<br><div class='current-result'>"
+  //   + "<form action='playlist/add_track'>"
+  //   + "<input type='hidden' name='title' value='
+  //   + item.name
+  //   +
+  //   class='add-link'>Add</a><p>"
+  //   + " by "
+  //   + item.artists[0].name
+  //   + "</p></div></div><br>");
 }
 
 // function deletePost(event){

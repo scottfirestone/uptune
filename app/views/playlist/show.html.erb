@@ -6,7 +6,7 @@
       </p>
     </div>
     <div class="col-sm-8 text-left">
-      <div class="container">
+      <div class="container playlist">
         <h1> Current Playlist </h1>
         <table>
           <thead>
@@ -14,11 +14,16 @@
               <th>#</th>
               <th>Title</th>
               <th>Artist</th>
-              <th>Duration</th>
               <th>Votes</th>
           </tr>
           </thead>
           <tbody>
+            <% @playlist.tracks.each_with_index do |track, i| %>
+              <tr><%= i %></tr>
+              <tr><%= track.title %></tr>
+              <tr><%= track.artist %></tr>
+              <tr>1</tr>
+            <% end %>
           </tbody>
         </table>
       </div>
@@ -26,10 +31,11 @@
     <div class="col-sm-2 sidenav">
       <div id="custom-search-input">
        <div class="input-group col-md-12">
-         <input type="text" class="search-query form-control" placeholder="Search Spotify"/>
+         <input type="text" class="search-query form-control" placeholder="Search Spotify", name="query"/>
          <span class="input-group-btn">
            <button id="search-spotify" class="btn btn-info" type="button">
-             <span class=" glyphicon glyphicon-search"></span>
+             Search
+             <!-- <span class=" glyphicon glyphicon-search"></span> -->
            </button>
          </span>
        </div>

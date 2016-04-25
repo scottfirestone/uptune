@@ -35,8 +35,7 @@ RSpec.describe SpotifyUserService, type: :service do
     user = create_authenticated_user
     service = SpotifyUserService.new(user)
 
-    response = service.add_track_to_playlist(playlist_id, track_uri)
+    service.add_track_to_playlist(playlist_id, track_uri)
 
-    expect()
   end
 end
