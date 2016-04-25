@@ -52,8 +52,6 @@ function renderResult(item){
   s.setAttribute('class', "add-link");
   s.setAttribute('value', "Add");
 
-
-
   f.appendChild(title)
   f.appendChild(artist)
   f.appendChild(uri)
@@ -61,7 +59,7 @@ function renderResult(item){
   f.appendChild(s)
 
   document.getElementById("search-results").appendChild(f)
-  $("#search-results").append("<div class=row>"+item.name+" by "+item.artists[0].name+"</div>");
+  $("#search-results").append("<div class='list-group'>"+item.name+" by "+item.artists[0].name+"</div>");
   // $("#search-results")
   //   .append("<div class=row>"
   //   + "<br><div class='current-result'>"
