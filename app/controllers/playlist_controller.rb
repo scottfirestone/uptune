@@ -17,6 +17,7 @@ class PlaylistController < ApplicationController
     if track = playlist.add_track(track_params(params))
       pt = PlaylistTrack.where(playlist_id: playlist.id, track_id: track.id).first
       pt.votes.create(token: session[:token])
+      binding.pry
       redirect_to playlist_path(playlist.code)
     else
       flash.now[:danger] = "That song is already on the playlist"

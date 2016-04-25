@@ -18,13 +18,18 @@
             </tr>
             </thead>
             <tbody>
-              <% @playlist.tracks.each_with_index do |track, i| %>
+              <% @playlist.playlist_tracks.each_with_index do |playlist_track, i| %>
               <tr>
                 <div class="track-<%= i + 1 %>">
                   <td><%= i + 1%></td>
-                  <td><%= track.title %></td>
-                  <td><%= track.artist %></td>
-                  <td>1</td>
+                  <td><%= playlist_track.track.title %></td>
+                  <td><%= playlist_track.track.artist %></td>
+                  <td><%= playlist_track.vote_count %></td>
+                  <% unless playlist_track.votes.pluck(:token).include?(user_token) %>
+                    <td><button id="upvote-track" class="btn btn-default btn-sm" type="button">
+                      <span class="glyphicon glyphicon-circle-arrow-up	"></span>&nbsp;
+                    </button></td>
+                  <% end %>
                 </div>
               </tr>
               <% end %>

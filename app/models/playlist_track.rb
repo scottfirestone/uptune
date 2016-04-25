@@ -5,4 +5,8 @@ class PlaylistTrack < ActiveRecord::Base
   has_many :votes
 
   validates_uniqueness_of :track_id, { scope: :playlist_id }
+
+  def vote_count
+    votes.count
+  end
 end
