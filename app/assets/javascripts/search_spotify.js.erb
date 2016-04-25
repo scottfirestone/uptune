@@ -6,12 +6,13 @@ $(document).ready(function(){
 });
 
 function fetchResults(queryParams){
+  $("#search-results").empty();
   var queryParams = $(".search-query").val();
 
   $.ajax({
     url: "https://api.spotify.com/v1/search?q=" +
     queryParams +
-    "&type=track&limit=3",
+    "&limit=5&type=track,album,artist",
     method: "GET",
     success: function(results){
       var items = results.tracks.items

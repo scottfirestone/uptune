@@ -20,10 +20,12 @@
             <tbody>
               <% @playlist.tracks.each_with_index do |track, i| %>
               <tr>
-                <td><%= i + 1%></td>
-                <td><%= track.title %></td>
-                <td><%= track.artist %></td>
-                <td>1</td>
+                <div class="track-<%= i + 1 %>">
+                  <td><%= i + 1%></td>
+                  <td><%= track.title %></td>
+                  <td><%= track.artist %></td>
+                  <td>1</td>
+                </div>
               </tr>
               <% end %>
             </tbody>
@@ -37,6 +39,7 @@
         <span class="input-group-btn">
           <button id="search-spotify" class="btn btn-default" type="button">Search</button>
         </span>
+        <br>
       </div>
       <div id="search-results">
       </div>
