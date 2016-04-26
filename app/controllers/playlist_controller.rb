@@ -25,6 +25,12 @@ class PlaylistController < ApplicationController
     end
   end
 
+  def upvote_track
+    playlist_track = PlaylistTrack.find(params[:playlist_track_id])
+    playlist_track.votes.create(token: session[:token])
+    redirect_to :back
+  end
+
   private
 
     def track_params(params)

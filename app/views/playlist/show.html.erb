@@ -26,9 +26,9 @@
                   <td><%= playlist_track.track.artist %></td>
                   <td><%= playlist_track.vote_count %></td>
                   <% unless playlist_track.votes.pluck(:token).include?(user_token) %>
-                    <td><button id="upvote-track" class="btn btn-default btn-sm" type="button">
+                    <td><%= button_to "Upvote", action: "upvote_track", params: { playlist_track_id: playlist_track.id } %>
                       <span class="glyphicon glyphicon-circle-arrow-up	"></span>&nbsp;
-                    </button></td>
+                    </td>
                   <% end %>
                 </div>
               </tr>
