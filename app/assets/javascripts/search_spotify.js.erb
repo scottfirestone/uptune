@@ -6,12 +6,13 @@ $(document).ready(function(){
 });
 
 function fetchResults(queryParams){
+  $("#search-results").empty();
   var queryParams = $(".search-query").val();
 
   $.ajax({
     url: "https://api.spotify.com/v1/search?q=" +
     queryParams +
-    "&type=track&limit=3",
+    "&limit=5&type=track,album,artist",
     method: "GET",
     success: function(results){
       var items = results.tracks.items
@@ -58,8 +59,8 @@ function renderResult(item){
   f.appendChild(code)
   f.appendChild(s)
 
-  document.getElementById("search-results").appendChild(f)
-  $("#search-results").append("<div class='list-group'>"+item.name+" by "+item.artists[0].name+"</div>");
+  // document.getElementById("search-results").appendChild(f)
+  $("#search-results").append(f).append("<div class='list-group'>"+item.name+" by "+item.artists[0].name+"</div>");
   // $("#search-results")
   //   .append("<div class=row>"
   //   + "<br><div class='current-result'>"

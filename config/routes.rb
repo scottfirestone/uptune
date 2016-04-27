@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   resources :playlist, only:[:show, :create]
   post "/playlist/add_track",       to: "playlist#add_track"
+  post "/playlist/upvote_track",    to: "playlist#upvote_track"
 end

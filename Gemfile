@@ -11,6 +11,7 @@ gem 'figaro'
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-spotify'
+gem 'faraday'
 
 group :development, :test do
   gem 'byebug'
@@ -18,6 +19,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'pry', require: 'pry'
+  gem 'rspec-rails', '~> 3.0'
 end
 
 group :development do
@@ -33,6 +35,5 @@ group :test do
   gem 'launchy'
   gem 'capybara'
   gem 'capybara-webkit'
-  gem 'rspec-rails', '~> 3.0'
   gem 'database_cleaner'
 end

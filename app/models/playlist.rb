@@ -19,9 +19,15 @@ class Playlist < ActiveRecord::Base
     end
   end
 
+  def reorder_tracks_by_votes
+    playlist_tracks.includes(:votes)
+      .group("playlist_tracks.id")
+      .order("votes.count DESC")
+  end
+
   def generate_code
     while self.code.nil? do
-      code = CodeGenerator.generate_code
+      code = CodeGenerator.generate_playlist_code
       break if update(code: code)
     end
   end
@@ -31,7 +37,6 @@ class Playlist < ActiveRecord::Base
   end
 
   def add_track(track_params)
-    # binding.pry
     tracks.create(
       track_params
     )
