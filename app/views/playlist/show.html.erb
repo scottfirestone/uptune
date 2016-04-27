@@ -24,15 +24,19 @@
                   <td><%= i + 1%></td>
                   <td><%= playlist_track.track.title %></td>
                   <td><%= playlist_track.track.artist %></td>
+                  <% if playlist_track.user_voted?(user_token) %>
+                    <td>
+                      <%= content_tag :button, type: "submit", class: "vote", action: "upvote_track", params: { playlist_track_id: playlist_track.id } do %>
+                        <%#= image_tag class""%>
+                      <%#= button_to "Upvote", action: "upvote_track", params: { playlist_track_id: playlist_track.id } %>
+                      <%= playlist_track.vote_count %>
+                      <span class="glyphicon glyphicon-circle-arrow-up"></span>&nbsp;
+                      <% end %>
 
-                  <td><%= playlist_track.vote_count %></td>
-                  <% unless playlist_track.user_voted?(user_token) %>
-                    <td><%= button_to "Upvote", action: "upvote_track", params: { playlist_track_id: playlist_track.id } %>
-                      <span class="glyphicon glyphicon-circle-arrow-up	"></span>&nbsp;
                     </td>
+                  <% else %>
+                    <td><%= playlist_track.vote_count %></td>
                   <% end %>
-
-
                 </div>
               </tr>
               <% end %>
