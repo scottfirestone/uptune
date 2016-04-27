@@ -18,7 +18,7 @@
             </tr>
             </thead>
             <tbody>
-              <% @playlist.playlist_tracks.each_with_index do |playlist_track, i| %>
+              <% @playlist.playlist_tracks.reorder_tracks_by_votes.each_with_index do |playlist_track, i| %>
               <tr>
                 <div class="track-<%= i + 1 %>">
                   <td><%= i + 1%></td>

@@ -9,7 +9,6 @@ class PlaylistController < ApplicationController
 
   def show
     @playlist = Playlist.find_by(code: params[:id])
-    @playlist.reorder_tracks_by_votes
     render file: "public/404" if @playlist.nil?
   end
 

@@ -19,12 +19,6 @@ class Playlist < ActiveRecord::Base
     end
   end
 
-  def reorder_tracks_by_votes
-    playlist_tracks.includes(:votes)
-      .group("playlist_tracks.id")
-      .order("votes.count DESC")
-  end
-
   def generate_code
     while self.code.nil? do
       code = CodeGenerator.generate_playlist_code
