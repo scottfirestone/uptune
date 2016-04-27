@@ -9,6 +9,7 @@ class PlaylistController < ApplicationController
 
   def show
     @playlist = Playlist.find_by(code: params[:id])
+    @playlist.reorder_tracks_by_votes
     render file: "public/404" if @playlist.nil?
   end
 
@@ -17,7 +18,6 @@ class PlaylistController < ApplicationController
     if track = playlist.add_track(track_params(params))
       pt = PlaylistTrack.where(playlist_id: playlist.id, track_id: track.id).first
       pt.votes.create(token: session[:token])
-      binding.pry
       redirect_to playlist_path(playlist.code)
     else
       flash.now[:danger] = "That song is already on the playlist"

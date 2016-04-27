@@ -5,12 +5,6 @@ class PlaylistTrack < ActiveRecord::Base
 
   validates_uniqueness_of :track_id, { scope: :playlist_id }
 
-  default_scope {
-    joins(:votes)
-    .group(:id)
-    .order("votes.count DESC")
-  }
-
   def vote_count
     votes.count
   end
