@@ -30,6 +30,12 @@ class PlaylistController < ApplicationController
     redirect_to :back
   end
 
+  def complete
+    playlist = Playlist.find_by(code: params[:code])
+    playlist_completer = PlaylistCompleter.new(playlist)
+    # playlist_completer.play
+  end
+
   private
 
     def track_params(params)

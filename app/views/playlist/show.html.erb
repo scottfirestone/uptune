@@ -34,7 +34,7 @@
               <div class="track-<%= i + 1 %>">
                 <td style="width: 10%"><%= i + 1%></td>
                 <td style="width: 30%"><%= playlist_track.track.title %></td>
-                <td style="width: 30%"><%= playlist_track.track.artist %></td>
+                <td style="width: 30%"><%= playlist_track.track.artist %></ td>
                 <% if playlist_track.user_voted?(user_token) %>
                   <td style="width: 30%"><%= playlist_track.vote_count %></td>
                 <% else %>
@@ -52,5 +52,8 @@
         </table>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <%= button_to "Play", action: "complete", params: { code: @playlist.code } %>
   </div>
 </div>

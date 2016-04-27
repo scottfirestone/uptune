@@ -29,10 +29,12 @@ class Playlist < ActiveRecord::Base
   def to_param
     code
   end
-  # 
-  # def add_track(track_params)
-  #   tracks.create(
-  #     track_params
-  #   )
-  # end
+
+  def track_uris
+    binding.pry
+    playlist_tracks = self.playlist_tracks.reorder_tracks_by_votes
+    playlist_tracks.map { |playlist_track|
+      playlist_track.track.uri
+    }
+  end
 end
