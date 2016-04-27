@@ -29,10 +29,10 @@ class Playlist < ActiveRecord::Base
   def to_param
     code
   end
-
-  def add_track(track_params)
-    tracks.create(
-      track_params
-    )
-  end
+  # 
+  # def add_track(track_params)
+  #   tracks.create(
+  #     track_params
+  #   )
+  # end
 end
