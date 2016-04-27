@@ -24,12 +24,15 @@
                   <td><%= i + 1%></td>
                   <td><%= playlist_track.track.title %></td>
                   <td><%= playlist_track.track.artist %></td>
+
                   <td><%= playlist_track.vote_count %></td>
-                  <% unless playlist_track.votes.pluck(:token).include?(user_token) %>
+                  <% unless playlist_track.user_voted?(user_token) %>
                     <td><%= button_to "Upvote", action: "upvote_track", params: { playlist_track_id: playlist_track.id } %>
                       <span class="glyphicon glyphicon-circle-arrow-up	"></span>&nbsp;
                     </td>
                   <% end %>
+
+
                 </div>
               </tr>
               <% end %>
