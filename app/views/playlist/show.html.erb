@@ -22,23 +22,23 @@
         <table class="table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Artist</th>
-              <th>Votes</th>
+              <th class="text-center">#</th>
+              <th class="text-center">Title</th>
+              <th class="text-center">Artist</th>
+              <th class="text-center">Votes</th>
             </tr>
           </thead>
           <tbody>
             <% @playlist.playlist_tracks.reorder_tracks_by_votes.each_with_index do |playlist_track, i| %>
             <tr>
               <div class="track-<%= i + 1 %>">
-                <td><%= i + 1%></td>
-                <td><%= playlist_track.track.title %></td>
-                <td><%= playlist_track.track.artist %></td>
+                <td style="width: 10%"><%= i + 1%></td>
+                <td style="width: 30%"><%= playlist_track.track.title %></td>
+                <td style="width: 30%"><%= playlist_track.track.artist %></td>
                 <% if playlist_track.user_voted?(user_token) %>
-                  <td><%= playlist_track.vote_count %></td>
+                  <td style="width: 30%"><%= playlist_track.vote_count %></td>
                 <% else %>
-                  <td>
+                  <td style="width: 30%">
                     <%= button_to action: "upvote_track", class: "vote", params: { playlist_track_id: playlist_track.id } do %>
                       <%= playlist_track.vote_count %>
                       <span class="glyphicon glyphicon-circle-arrow-up"></span>&nbsp;
