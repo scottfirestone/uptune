@@ -14,7 +14,7 @@ class PlaylistController < ApplicationController
 
   def add_track
     playlist = Playlist.find_by(code: params[:track][:code])
-    if track = playlist.add_track(track_params(params))
+    if track = playlist.tracks.create(track_params(params))
       pt = PlaylistTrack.where(playlist_id: playlist.id, track_id: track.id).first
       pt.votes.create(token: session[:token])
       redirect_to playlist_path(playlist.code)

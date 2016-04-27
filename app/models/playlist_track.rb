@@ -14,4 +14,8 @@ class PlaylistTrack < ActiveRecord::Base
       .group("playlist_tracks.id")
       .order("votes.count DESC")
   end
+
+  def user_voted?(user_token)
+    votes.pluck(:token).include?(user_token)
+  end
 end
