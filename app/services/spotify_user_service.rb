@@ -61,8 +61,4 @@ class SpotifyUserService
     def parse(response)
       JSON.parse(response.body, symbolize_names: true)
     end
-    #
-    # def headers
-    #   ['Authorization'] = "Bearer #{user.token}"
-    # end
 end
