@@ -1,16 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe Playlist, type: :model do
-  it "can add a track" do
-    track_params = {
-      uri:    "spotify:track:51pQ7vY7WXzxskwloaeqyj",
-      artist: "Led Zeppelin",
-      title:  "Stairway To Heaven"
-    }
-    playlist = create(:playlist)
-    playlist.add_track(track_params)
+  it { should belong_to(:user) }
+  it { should have_many(:tracks) }
+  it { should have_many(:playlist_tracks) }
+  it { should validate_uniqueness_of(:code) }
 
-    expect(playlist.tracks.count).to eq(1)
-    expect(playlist.tracks.first.uri).to eq("spotify:track:51pQ7vY7WXzxskwloaeqyj")
+  it "should format its created at" do
+    playlist = create(:playlist)
+    playlist.update(created_at: "2016-04-28 16:44:23.557601000 +0000")
+
+    expect(playlist.created_at).to eq(Time.parse("2016-04-28 16:44:23.557601000 +0000"))
+    expect(playlist.created_at_formatted).to eq("04/28/2016 at 04:44PM")
   end
 end

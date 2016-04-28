@@ -7,7 +7,6 @@ RSpec.feature "Spotify Oauth" do
     within(".navbar") do
       expect(page).to have_content("Login with Spotify")
       expect(page).to have_content("UpTune")
-      expect(page).to have_content("Start an UpTune Playlist")
       expect(page).to_not have_content("mock_user")
       expect(page).to_not have_content("Logout")
     end
