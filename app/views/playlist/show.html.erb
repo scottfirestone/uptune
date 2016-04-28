@@ -54,7 +54,7 @@
           </table>
         </div>
         <div class="play">
-          <%= link_to "Play", playlist_complete_path, params: { code: @playlist.code }, class: "btn btn-large btn-block" %>
+          <%= link_to "Play", playlist_complete_path(@playlist), class: "btn btn-large btn-block" %>
         </div>
       <% end %>
     </div>
