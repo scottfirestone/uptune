@@ -33,7 +33,7 @@ class PlaylistController < ApplicationController
   def complete
     playlist = Playlist.find_by(code: params[:code])
     playlist_completer = PlaylistCompleter.new(playlist)
-    # playlist_completer.play
+    redirect_to playlist_play_path(playlist.code)
   end
 
   private

@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   delete "/logout",             to: "sessions#destroy"
 
   resources :playlist, only:[:show, :create]
+
   post "/playlist/add_track",       to: "playlist#add_track"
   post "/playlist/upvote_track",    to: "playlist#upvote_track"
-  post "/playlist/complete",    to: "playlist#complete"
+  post "/playlist/complete",        to: "playlist#complete"
+  get "/playlist/:code/play", to: "playlist/play#show", as: "playlist_play"
 end

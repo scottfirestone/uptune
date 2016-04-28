@@ -37,8 +37,7 @@ class SpotifyUserService
       req.url "v1/users/#{user.uid}/playlists/#{playlist.playlist_id}/tracks"
       req.body = req_body
     end
-    a = parse(response)
-    binding.pry
+    parse(response)
   end
 
   private

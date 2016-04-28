@@ -31,7 +31,6 @@ class Playlist < ActiveRecord::Base
   end
 
   def track_uris
-    binding.pry
     playlist_tracks = self.playlist_tracks.reorder_tracks_by_votes
     playlist_tracks.map { |playlist_track|
       playlist_track.track.uri
