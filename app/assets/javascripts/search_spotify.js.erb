@@ -1,8 +1,5 @@
 $(document).ready(function(){
   $("#search-spotify").on('click', fetchResults);
-  // $("#create-post").on('click', createPost);
-  // $("body").on('click', "a.delete-post", deletePost);
-  // setInterval(fetchPosts, 5000);
 });
 
 function fetchResults(queryParams){
@@ -59,30 +56,5 @@ function renderResult(item){
   f.appendChild(code)
   f.appendChild(s)
 
-  // document.getElementById("search-results").appendChild(f)
-  $("#search-results").append(f).append("<div class='list-group'>"+item.name+" by "+item.artists[0].name+"</div>");
-  // $("#search-results")
-  //   .append("<div class=row>"
-  //   + "<br><div class='current-result'>"
-  //   + "<form action='playlist/add_track'>"
-  //   + "<input type='hidden' name='title' value='
-  //   + item.name
-  //   +
-  //   class='add-link'>Add</a><p>"
-  //   + " by "
-  //   + item.artists[0].name
-  //   + "</p></div></div><br>");
+  $("#search-results").append("<div class='list-group'>").append(f).append(item.name+" by "+item.artists[0].name+"</div></div>");
 }
-
-// function deletePost(event){
-//   event.preventDefault();
-//   var post_id = $(this).parents(".post").data("post-id");
-//
-//   $.ajax({
-//     url: "https://birdeck.herokuapp.com/api/v1/posts/" + post_id + ".json",
-//     method: "DELETE",
-//     success: function(){
-//       $(".post[data-post-id=" + post_id + "]").remove();
-//     }
-//   })
-// }
