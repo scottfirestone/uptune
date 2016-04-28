@@ -32,7 +32,6 @@ class PlaylistController < ApplicationController
   end
 
   def complete
-    binding.pry
     playlist = Playlist.find_by(code: params[:code])
     playlist_completer = PlaylistCompleter.new(playlist)
     redirect_to playlist_play_path(playlist.code)
