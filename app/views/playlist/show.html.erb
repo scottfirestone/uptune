@@ -33,8 +33,8 @@
             <tbody>
               <% @playlist.playlist_tracks.reorder_tracks_by_votes.each_with_index do |playlist_track, i| %>
               <tr>
-                <div class="track-<%= i + 1 %>">
-                  <td style="width: 10%"><%= i + 1%></td>
+                <div class="track">
+                  <td class="track-number"><%= i + 1%></td>
                   <td style="width: 30%"><%= playlist_track.track.title %></td>
                   <td style="width: 30%"><%= playlist_track.track.artist %></ td>
                   <% if playlist_track.user_voted?(user_token) %>
