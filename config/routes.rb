@@ -12,7 +12,5 @@ Rails.application.routes.draw do
   post "/playlist/complete",        to: "playlist#complete"
   get "/playlist/:code/play", to: "playlist/play#show", as: "playlist_play"
 
-  resources :users, only:[] do
-    resources :playlists, only:[:index, :show]
-  end
+  get "/users/:uid/playlists", to: "users/playlists#index", as: "user_playlists"
 end

@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
   def token_expired?
     Time.now > token_expiry
   end
+
+  def to_param
+    uid
+  end
 end

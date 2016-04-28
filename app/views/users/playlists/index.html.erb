@@ -1,0 +1,6 @@
+<div class="container">
+  <% @playlists.each do |playlist| %>
+    <h3><%= link_to "Playlist created on #{playlist.created_at_formatted}", playlist_play_path(playlist) %></h3>
+    <iframe src="https://embed.spotify.com/?uri=<%= playlist.uri %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+  <% end %>
+</div>
