@@ -2,6 +2,7 @@ require "simplecov"
 require "vcr"
 require "capybara/rspec"
 require "capybara/webkit/matchers"
+require "support/wait_for_ajax"
 
 SimpleCov.start 'rails'
 
@@ -10,6 +11,7 @@ Capybara.javascript_driver = :webkit
 VCR.configure do |c|
   c.cassette_library_dir = 'vcr_cassettes'
   c.hook_into :webmock
+  c.ignore_localhost = true
 end
 
 RSpec.configure do |config|
@@ -106,8 +108,8 @@ end
 def create_authenticated_user
   user = User.create(uid: "mingus_amongus",
               image: "https://scontent.xx.fbcdn.net/hprofile-xap1/v/t1.0-1/249783_930132649627_927852406_n.jpg?oh=c79ea044bf0027f57b817bd734b46438&oe=57B11642",
-              token: "BQA5YhFv63_InK4mlc3TDFZLfT9FOUY-otWJS0yd07AFE_NpPSKLa-nFq5rji7m4Gy01YyFAtgqIIk4h1D-FGa4fJGQyng6AARk_5FiuOQ5OJDWergduAnZHYa5U0v4ed7rtRK1ykx9nfRaAea65SRhUW9T7NtzIupo86rWvUk45YXlOE0sH_a-rpuMPXmkrPYAQc6UvNZCCxXzW4w14Y4wr9AJ5QQQhHZO6",
+              token: "BQDCpfjBCwrOmFnpMBupxg2lLxEDT-4kct7l2f_XpcfMMu14SlMSbPVwLo7amqnUl-_3eKY-0Ef1ZK1_QGNMjGoazRykiTcx2vroxxEfrg_wwknyexYqFrPHaEVLvo9hNL5iuYxSXhU8BapfOWI9sT1t8qu4CM1ymQyrGzPwE48InMVm_qJLVXkqOKiIKaw2vmTxlFRwD16v9_QiIuKDt8riJDpf9CgGTk-6SA7ALmgVGTz-roEHNwG5D8g29AnwPA9RleEhmnXuVUDFOEwnuXk3hF72A4O5244vaVpNuHKk6P-ptRxEpMRUPXYQ",
               refresh_token: "AQD41yPAbRAlYzMAVG18vhVyOblK9jP2lZ_fh2B_EPKDHmzT-XJYnqXnW4TCpkk42DcL3OCH--34GTeUNHtOuDKvOtYSsYWCGrvhZvAp9cSxxnxYBfPZxehAc1Ie2b_Yg7c",
-              token_expiry: "Thu, 21 Apr 2016 01:46:29 UTC +00:00"
+              token_expiry: (Time.now + 1.hour)
   )
 end
