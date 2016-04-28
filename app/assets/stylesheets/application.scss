@@ -18,10 +18,18 @@
 @import "bootstrap";
 @import "custom";
 
-.avatar {
-  height: 50px;
-  width: 50px;
+/* welcome page */
+button {
+  background-color: #339933;
 }
+.description {
+  font-size: 1.2em;
+}
+img {
+  width: 50%;
+  height: 50%;
+}
+/* playlist */
 .playlist {
   margin-top: 20px;
 }
@@ -34,12 +42,13 @@ td {
 }
 /* Adding Tracks */
 #search-results{
-  color: #339933;
+  background-color: #339933;
 }
 /* Voting */
 form.button_to {
     color: #339933;
 }
+
 td {
   table-layout: fixed;
   overflow: hidden;

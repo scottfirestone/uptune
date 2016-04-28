@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="well-lg">
+    <h1>UpTune. Rock the vote.</h1>
+  </div>
+  <div class="row description">
+    <div class="col-md-4 col-xs-12">
+      <div class="well-sm text-center">
+        <p>
+          <strong>1. </strong>Login with Spotify to create a new playlist, or join one by navigating with the unique playlist URL.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="well-sm text-center">
+        <p>
+          <strong>2. </strong>Search by track, album, or artist and add tracks to the playlist.
+        </p>
+      </div>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <div class="well-sm text-center">
+        <p>
+          <strong>3. </strong>Vote and listen to the songs that the people want to hear! No crap!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="start">
+    <% if current_user %>
+      <%= link_to button_tag("Start an UpTune Playlist"), playlist_index_path, method: "post" %>
+    <% else %>
+      <%= link_to image_tag("login-button-mobile.png", border: 0), {action: 'spotify', controller: 'auth'}, class: 'spotify-login' %>
+    <% end %>
+  </div>
+</div>
