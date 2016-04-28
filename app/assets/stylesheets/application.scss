@@ -40,6 +40,9 @@ td {
 .input-group-btn {
   vertical-align: top;
 }
+.play {
+  background-color: #339933;
+}
 /* Adding Tracks */
 #search-results{
   background-color: #339933;
@@ -48,7 +51,6 @@ td {
 form.button_to {
     color: #339933;
 }
-
 td {
   table-layout: fixed;
   overflow: hidden;
