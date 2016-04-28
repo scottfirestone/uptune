@@ -18,11 +18,11 @@
               <%= current_user.uid %>
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
+              <li><%= link_to "My Playlists", user_playlists_path(current_user) %></li>
               <li><%= link_to "Logout", logout_path, method: "delete" %></li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to "Start an UpTune Playlist", spotify_login_path %></li>
           <li><%= link_to "Login with Spotify", spotify_login_path %></li>
         <% end %>
       </ul>

@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   post "/playlist/upvote_track",    to: "playlist#upvote_track"
   post "/playlist/complete",        to: "playlist#complete"
   get "/playlist/:code/play", to: "playlist/play#show", as: "playlist_play"
+
+  get "/users/:uid/playlists", to: "users/playlists#index", as: "user_playlists"
 end

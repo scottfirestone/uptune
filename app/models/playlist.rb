@@ -36,4 +36,8 @@ class Playlist < ActiveRecord::Base
       playlist_track.track.uri
     }
   end
+
+  def created_at_formatted
+    created_at.strftime("%m/%d/%Y at %I:%M%p")
+  end
 end
