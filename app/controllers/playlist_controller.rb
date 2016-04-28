@@ -14,13 +14,14 @@ class PlaylistController < ApplicationController
 
   def add_track
     playlist = Playlist.find_by(code: params[:track][:code])
-    if track = playlist.tracks.create(track_params(params))
-      pt = PlaylistTrack.where(playlist_id: playlist.id, track_id: track.id).first
-      pt.votes.create(token: session[:token])
+    track = Track.where(uri: params[:track][:uri]).first_or_create(track_params(params))
+    playlist_track = PlaylistTrack.new(playlist_id: playlist.id, track_id: track.id)
+    if playlist_track.save
+      playlist_track.votes.create(token: session[:token])
       redirect_to playlist_path(playlist.code)
     else
-      flash.now[:danger] = "That song is already on the playlist"
-      render :show
+      flash[:danger] = "That song is already on the playlist"
+      redirect_to playlist_path(playlist)
     end
   end
 
