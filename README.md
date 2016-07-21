@@ -1,6 +1,6 @@
 ## Introduction
 
-UpTune is an app where users collaborate and vote on Spotify playlists. Playlists are dynamically reordered based on track voting. This project was completed as part of the module 3 curriculum at the Turing School of Software and Design. 
+UpTune is an app where users collaborate and vote to create Spotify playlists. Playlists are dynamically reordered based on track voting. This project was completed as part of the module 3 curriculum at the Turing School of Software and Design. 
 
 ## Development
 
