@@ -13,5 +13,5 @@ The test suite is built using RSpec and tests models, controllers, and features.
 
 ## Production
 
-The production app is hosted [here](uptune.herokuapp.com) on Heroku.
+The production app is hosted [here](https://uptune.herokuapp.com) on Heroku.
 Use Spotify credentials to log-in and start a new playlist. Share the unique playlist URL with friends to create playlists, or mimic multiple users using different browsers.
